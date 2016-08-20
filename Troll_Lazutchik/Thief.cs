@@ -10,7 +10,7 @@ namespace Troll_Lazutchik
     {
         public const int ID = 4;
 
-        private int Health = 30;
+        private int Health = 20;
         private int Damage = 10;
         private int DodgeChance = 40;
 
@@ -21,8 +21,8 @@ namespace Troll_Lazutchik
 
         public void Fighting(Player player, Thief thief)
         {
-            Console.WriteLine(""); // при встерче 
-
+            Console.WriteLine("На дороге вы встречаете странного мужчину, закрывшего повязкой лицо. "); // при встерче 
+            Console.WriteLine("Приблизившись, он угрожает вам кинжалом. ");
             Console.WriteLine("");
             Console.WriteLine("Ваше текущее здоровье: " + player.Health);
             Console.WriteLine("Текущее здоровье врага: " + thief.Health);
@@ -36,9 +36,18 @@ namespace Troll_Lazutchik
 
             if (player.Health <= 0)
             {
-                Console.WriteLine("Какая досада! Вор-ловкач выходит побудителем из этой схватки.");
-                Optional.Restart();
-                player.Alive = false;
+                if (thief.Health > 0)
+                {
+                    Console.WriteLine("Какая досада! Вор-ловкач выходит победителем из этой схватки.");
+                    Optional.Restart();
+                    player.Alive = false;
+                }
+                else
+                {
+                    Console.WriteLine("Из этого боя никто не выходит поедителем.");
+                    Optional.Restart();
+                    player.Alive = false;
+                }
             }
             else
             {

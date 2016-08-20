@@ -13,6 +13,7 @@ namespace Troll_Lazutchik
         // WEAPONS DAMAGE
         public const int FistDamage = 8;
         public const int KnifeDamage = 10;
+        public const int dubinaDamage = 11;
 
         // STEPS TO LOCATIONS
         int stepsForest;
@@ -30,6 +31,17 @@ namespace Troll_Lazutchik
         {
             Program Game = new Program();
 
+           
+
+            Game.NewGame();
+            
+            Console.ReadLine();
+        }
+
+        
+
+        public void NewGame()
+        {
             #region PHRASES
 
             phrasesMas[1, 1] = "Пройдя пару километров, вы замечаете растерзаный труп лошади своего соседа... "; phrasesMas[1, 0] = "n";
@@ -43,16 +55,14 @@ namespace Troll_Lazutchik
             phrasesMas[9, 1] = "Вы немного заплутали, но вскоре нашли правильный путь."; phrasesMas[9, 0] = "n";
             phrasesMas[10, 1] = "Вам становится плохо. Алкоголь даёт о себе знать. Немного передохнув, вы выдвигаетесь дальше..."; phrasesMas[10, 0] = "n";
 
-            phrasesMas[11, 1] = ""; phrasesMas[11, 0] = "n";
-            phrasesMas[12, 1] = ""; phrasesMas[12, 0] = "n";
-            phrasesMas[13, 1] = ""; phrasesMas[13, 0] = "n";
+            phrasesMas[11, 1] = "На дорогоге вызамечаете сеймейство маслят. Эти ребята выглядят очень аппетитно. Рискнёте съесть их?"; phrasesMas[11, 0] = "n";
+            phrasesMas[12, 1] = ""; phrasesMas[12, 0] = "n";  // Встреча торговца
+            phrasesMas[13, 1] = "Вы замечаете, что тучи сгущаются, видимо начнётся дождь."; phrasesMas[13, 0] = "n";
             phrasesMas[14, 1] = ""; phrasesMas[14, 0] = "n";
             phrasesMas[15, 1] = ""; phrasesMas[15, 0] = "n";
             phrasesMas[16, 1] = ""; phrasesMas[16, 0] = "n";
             phrasesMas[17, 1] = ""; phrasesMas[17, 0] = "n";
             phrasesMas[18, 1] = ""; phrasesMas[18, 0] = "n";
-            phrasesMas[19, 1] = ""; phrasesMas[19, 0] = "n";
-            phrasesMas[20, 1] = ""; phrasesMas[20, 0] = "n";
 
 
             phrasesMas[100, 1] = "На подходе к деревне вы замечаете иcтоптанное конями поле..."; phrasesMas[100, 0] = "n";
@@ -64,15 +74,6 @@ namespace Troll_Lazutchik
 
             #endregion
 
-            Game.NewGame();
-            
-            Console.ReadLine();
-        }
-
-        
-
-        public void NewGame()
-        {
             player = new Player() { Damage = FistDamage };
             step = 0;
             
@@ -143,7 +144,15 @@ namespace Troll_Lazutchik
             Console.WriteLine("1) отставного офицера;   (Легко)");
             Console.WriteLine("2) сторожа;   (Средне)");
             Console.WriteLine("3) крестьянина;   (Сложно)");
-            playerClass = Console.ReadLine();
+            do
+            {
+                playerClass = Console.ReadLine();
+                if (playerClass != "1" && playerClass != "2" && playerClass != "3")
+                {
+                    Console.WriteLine("--------------------------------");
+                }
+            } while (playerClass != "1" && playerClass != "2" && playerClass != "3");
+
 
             Console.WriteLine("...нечего взять, разбойники нашли, чем поживиться.");
             Console.WriteLine("");
@@ -194,9 +203,9 @@ namespace Troll_Lazutchik
                             nextEnemyID++;
                             break;
 
-                       /* case :
-
-                            break; */
+                        case Trader.ID:
+                            // Выбор действия с торговцем
+                            break;
                     }
 
                     if (player.Alive == false)
@@ -206,7 +215,7 @@ namespace Troll_Lazutchik
                 }
                 else
                 {
-                    ViewPhrase(11, 20);
+                    ViewPhrase(11, 18);
                 }
                 
             }
@@ -225,7 +234,7 @@ namespace Troll_Lazutchik
 
             switch (randomPhrase)
             {
-                case 7:
+                case 7:         // споткнулся
                     player.Health -= 1;
                     Console.WriteLine("Получено урона - 1.");
                     Console.WriteLine("Ваше текущее здоровье: " + player.Health);
@@ -233,10 +242,24 @@ namespace Troll_Lazutchik
 
                     break;
 
-                case 8:
-                    Optional.GetEatCommand(player);
+                case 8:         // куст ягод
+                    string poisonedPhraseBerry = "Вы отравлены! Жаль, вы не знали, что эти ягоды ядовиты.";
+                    string healedPhraseBerry = "Вкусные ягоды уталили ваш голод.";
+
+                    Optional.GetEatCommand(player, poisonedPhraseBerry, healedPhraseBerry, "");
 
                     break;
+
+                case 11:        // маслята
+                    string poisonedPhraseMushrooms = "С виду аппетитные маслята не оправдали ожиданий.";
+                    string healedPhraseMushrooms = "Аппетитные маслята уталили голод.";
+                    string deathPhraseMushrooms = "Маслята окончательно вас добивают.";
+
+                    Optional.GetEatCommand(player, poisonedPhraseMushrooms, healedPhraseMushrooms, deathPhraseMushrooms);
+
+                    break;
+
+                
             }
         }
 

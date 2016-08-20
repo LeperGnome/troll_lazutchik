@@ -51,6 +51,7 @@
     <Compile Include="Rat.cs" />
     <Compile Include="Skolopendra.cs" />
     <Compile Include="Thief.cs" />
+    <Compile Include="Trader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

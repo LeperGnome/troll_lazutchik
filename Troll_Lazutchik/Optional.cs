@@ -43,7 +43,7 @@ namespace Troll_Lazutchik
             } while (goKey != "g");
         }
 
-        public static void GetEatCommand(Player player)
+        public static void GetEatCommand(Player player, string poisinedPhrase, string healedPhrase, string deathPhrase)
         {
             Console.WriteLine("Введите 'eat', что бы начать трапезу. Что бы идти далее введите 'dont eat'.");
             Console.WriteLine("--------------------------------");
@@ -65,17 +65,24 @@ namespace Troll_Lazutchik
                     case 3:
                         int poisonDamageRandom = random.Next(10, 16);
                         player.Health -= poisonDamageRandom;
-                        Console.WriteLine("Вы отравлены! ");
+                        Console.WriteLine(poisinedPhrase);
                         Console.WriteLine("Потеряно здоровья: " + poisonDamageRandom);
                         Console.WriteLine("Текущее здоровье: " + player.Health);
                         Console.WriteLine("--------------------------------");
+
+                        if(player.Health <= 0)
+                        {
+                            Console.WriteLine("deathPhrase");
+                            Restart();
+                            player.Alive = false;
+                        }
 
                         break;
 
                     case 2:
                         int hpHealed = random.Next(5, 11);
                         player.Health += hpHealed;
-                        Console.WriteLine("Вы уталили свой голод. ");
+                        Console.WriteLine(healedPhrase);
                         Console.WriteLine("Здоровья восстановлено: " + hpHealed);
                         Console.WriteLine("Ваше текущее здоровье: " + player.Health);
                         Console.WriteLine("--------------------------------");
@@ -111,6 +118,7 @@ namespace Troll_Lazutchik
             {
                 int currentRaw = random.Next((int)(inputDamage - (inputDamage * 0.25)), (int)(inputDamage + (inputDamage * 0.25)));
                 int current = currentRaw - (currentRaw / 100 * inputOppositeArmor);
+                int damageRuducedByArmor = currentRaw - current;
                 if (criticalChanceStatus)
                 {
 
@@ -118,15 +126,18 @@ namespace Troll_Lazutchik
                     if (critChance <= 50)
                     {
                         Console.WriteLine("Критический урон! ");
+                        Console.WriteLine("Урона блокировано: ", damageRuducedByArmor);
                         return current + (int)(current * 0.5);
                     }
                     else
                     {
+                        Console.WriteLine("Урона блокировано: ", damageRuducedByArmor);
                         return current;
                     }
                 }
                 else
                 {
+                    Console.WriteLine("Урона блокировано: ", damageRuducedByArmor);
                     return current;
                 }
             } else

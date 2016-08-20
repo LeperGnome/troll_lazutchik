@@ -63,11 +63,14 @@ namespace Troll_Lazutchik
 
         private void EatRat(Player player)
         {
+            string poisonedPhraseRat = "Поедание сырого мяса пагубно сказалось на вашем здоровье."; 
+            string healedPhraseRat = "Крысиное мясо оказалось очень даже съедобным.";
+
             Console.WriteLine("Мёртвая крыса выглядит аппетитно. ");
             Console.WriteLine("Вы можете съесть ее, чтобы воостановить здоровье, но учтите,что ");
             Console.WriteLine("крысы могут являться переносчиками заразы. ");
             Console.WriteLine("Съесть жирную крысу?");
-            Optional.GetEatCommand(player);
+            Optional.GetEatCommand(player, poisonedPhraseRat, healedPhraseRat, "");
         }
     }
 }
