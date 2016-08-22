@@ -13,3 +13,9 @@ C:\Users\Максим\Desktop\troll_lazutchik-master\Troll_Lazutchik\obj\Debug\T
 D:\Users\Konstantin\Documents\visual studio 2015\Projects\troll_lazutchik-master\Troll_Lazutchik\bin\Debug\Troll_Lazutchik.exe.config
 D:\Users\Konstantin\Documents\visual studio 2015\Projects\troll_lazutchik-master\Troll_Lazutchik\obj\Debug\Troll_Lazutchik.exe
 D:\Users\Konstantin\Documents\visual studio 2015\Projects\troll_lazutchik-master\Troll_Lazutchik\obj\Debug\Troll_Lazutchik.pdb
+D:\Users\Konstantin\Documents\visual studio 2015\Projects\troll_lazutchik\Troll_Lazutchik\bin\Debug\Troll_Lazutchik.exe.config
+D:\Users\Konstantin\Documents\visual studio 2015\Projects\troll_lazutchik\Troll_Lazutchik\obj\Debug\Troll_Lazutchik.exe
+D:\Users\Konstantin\Documents\visual studio 2015\Projects\troll_lazutchik\Troll_Lazutchik\obj\Debug\Troll_Lazutchik.pdb
+D:\Users\Konstantin\Documents\visual studio 2015\Projects\troll_lazutchik\Troll_Lazutchik\bin\Debug\Troll_Lazutchik.exe
+D:\Users\Konstantin\Documents\visual studio 2015\Projects\troll_lazutchik\Troll_Lazutchik\bin\Debug\Troll_Lazutchik.pdb
+D:\Users\Konstantin\Documents\visual studio 2015\Projects\troll_lazutchik\Troll_Lazutchik\obj\Debug\Troll_Lazutchik.csprojResolveAssemblyReference.cache

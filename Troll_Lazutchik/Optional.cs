@@ -116,9 +116,11 @@ namespace Troll_Lazutchik
             int dodge = random.Next(1, 100);
             if (dodge >= inputOppositeDodgeChance)
             {
+                int damageRuducedByArmor = 0;
                 int currentRaw = random.Next((int)(inputDamage - (inputDamage * 0.25)), (int)(inputDamage + (inputDamage * 0.25)));
-                int current = currentRaw - (currentRaw / 100 * inputOppositeArmor);
-                int damageRuducedByArmor = currentRaw - current;
+                double armorPerc = (double)inputOppositeArmor / 100;
+                int current = (int)(currentRaw - currentRaw * armorPerc);
+                damageRuducedByArmor = currentRaw - current;
                 if (criticalChanceStatus)
                 {
 
@@ -126,18 +128,18 @@ namespace Troll_Lazutchik
                     if (critChance <= 50)
                     {
                         Console.WriteLine("Критический урон! ");
-                        Console.WriteLine("Урона блокировано: ", damageRuducedByArmor);
+                        Console.WriteLine("Урона блокировано: " + damageRuducedByArmor);
                         return current + (int)(current * 0.5);
                     }
                     else
                     {
-                        Console.WriteLine("Урона блокировано: ", damageRuducedByArmor);
+                        Console.WriteLine("Урона блокировано: " + damageRuducedByArmor);
                         return current;
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Урона блокировано: ", damageRuducedByArmor);
+                    Console.WriteLine("Урона блокировано: " + damageRuducedByArmor);
                     return current;
                 }
             } else
