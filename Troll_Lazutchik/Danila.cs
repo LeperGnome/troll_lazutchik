@@ -62,8 +62,9 @@ namespace Troll_Lazutchik
                     Console.WriteLine("Данила побежден. Сегодня он останется без денег. ");
                     Console.WriteLine("В руке изувеченного Данилы лежит зазубренный нож. ");
                     Console.WriteLine("Вы подбираете его.");
-                    Console.WriteLine("--------------------------------");
                     player.Damage = 10;
+                    Console.WriteLine("Ваш текущий урон: " + player.Damage);
+                    Console.WriteLine("--------------------------------");
                 }
 
             }

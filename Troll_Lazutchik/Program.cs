@@ -56,7 +56,7 @@ namespace Troll_Lazutchik
             phrasesMas[10, 1] = "Вам становится плохо. Алкоголь даёт о себе знать. Немного передохнув, вы выдвигаетесь дальше..."; phrasesMas[10, 0] = "n";
 
             phrasesMas[11, 1] = "На дорогоге вызамечаете сеймейство маслят. Эти ребята выглядят очень аппетитно. Рискнёте съесть их?"; phrasesMas[11, 0] = "n";
-            phrasesMas[12, 1] = ""; phrasesMas[12, 0] = "n";  // Встреча торговца
+            phrasesMas[12, 1] = ""; phrasesMas[12, 0] = "n";
             phrasesMas[13, 1] = "Вы замечаете, что тучи сгущаются, видимо начнётся дождь."; phrasesMas[13, 0] = "n";
             phrasesMas[14, 1] = ""; phrasesMas[14, 0] = "n";
             phrasesMas[15, 1] = ""; phrasesMas[15, 0] = "n";
@@ -149,7 +149,7 @@ namespace Troll_Lazutchik
                 playerClass = Console.ReadLine();
                 if (playerClass != "1" && playerClass != "2" && playerClass != "3")
                 {
-                    Console.WriteLine("--------------------------------");
+                    Console.WriteLine("Неизвестная команда, попробуйте снова.");
                 }
             } while (playerClass != "1" && playerClass != "2" && playerClass != "3");
 
@@ -200,11 +200,15 @@ namespace Troll_Lazutchik
                         case Thief.ID:
                             Thief thief = new Thief();
                             thief.Fighting(player, thief);
+                            stepsToEnemy = NextEnemyStep();
                             nextEnemyID++;
                             break;
 
                         case Trader.ID:
-                            // Выбор действия с торговцем
+                            Trader trader = new Trader();
+                            trader.Meeting(player, trader);
+                            stepsToEnemy = NextEnemyStep();
+                            nextEnemyID++;
                             break;
                     }
 
@@ -265,7 +269,7 @@ namespace Troll_Lazutchik
 
         private int NextEnemyStep()
         {
-            return (random.Next(2, 5) + step);
+            return (random.Next(2, 4) + step);
         }
 
     }
