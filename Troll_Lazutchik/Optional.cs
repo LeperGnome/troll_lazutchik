@@ -15,7 +15,7 @@ namespace Troll_Lazutchik
 
         static Random random = new Random();
 
-        public static void GetAttckKey()
+        public static void GetAttckKey()            // forcing player to insert 'a' button for attacking
         {
             Console.WriteLine("Нажмите 'a', чтобы атаковать.");
             Console.WriteLine("--------------------------------");
@@ -29,7 +29,7 @@ namespace Troll_Lazutchik
             } while (attackKey != "a");
         }
 
-        public static void GetGoKey()
+        public static void GetGoKey()               // forcing player to insert 'g' button for going forvard
         {
             Console.WriteLine("Введите 'g', чтобы пройти далее.");
             Console.WriteLine("--------------------------------");
@@ -43,7 +43,7 @@ namespace Troll_Lazutchik
             } while (goKey != "g");
         }
 
-        public static void GetEatCommand(Player player, string poisinedPhrase, string healedPhrase, string deathPhrase)
+        public static void GetEatCommand(Player player, string poisinedPhrase, string healedPhrase, string deathPhrase)     // eating smth with chance of healing or taking damage (all unique phrases should be writen when used)
         {
             Console.WriteLine("Введите 'eat', что бы начать трапезу. Что бы идти далее введите 'dont eat'.");
             Console.WriteLine("--------------------------------");
@@ -92,7 +92,7 @@ namespace Troll_Lazutchik
             }
         }
 
-        public static void Restart()
+        public static void Restart()        // restarting the game or quiting 
         {
             Console.WriteLine("Введите 'y' для продолжения или 'n' для выхода из игры.");
             Console.WriteLine("--------------------------------");
@@ -111,7 +111,7 @@ namespace Troll_Lazutchik
             }
         }
 
-        public static int GetDamage(int inputDamage, bool criticalChanceStatus, int inputOppositeArmor, int inputOppositeDodgeChance)
+        public static int GetDamage(int inputDamage, bool criticalChanceStatus, int inputOppositeArmor, int inputOppositeDodgeChance)   // seting random damage for obj using obj average damage, ability to deal critical damage, enemy armor and enemy dodge chance (dealing no damage in this case)
         {
             int dodge = random.Next(1, 100);
             if (dodge >= inputOppositeDodgeChance)

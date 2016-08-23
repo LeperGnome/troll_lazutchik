@@ -100,7 +100,7 @@ namespace Troll_Lazutchik
             {
                 if (trader.Health > 0)
                 {
-                    Console.WriteLine("Вам не удалось одолеть надоедливого торговца. "); // поражение игрока
+                    Console.WriteLine("Вам не удалось одолеть надоедливого торговца. ");
                     Optional.Restart();
                     player.Alive = false;
                 }
