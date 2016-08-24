@@ -45,7 +45,8 @@ namespace Troll_Lazutchik
 
         public static void GetEatCommand(Player player, string poisinedPhrase, string healedPhrase, string deathPhrase)     // eating smth with chance of healing or taking damage (all unique phrases should be writen when used)
         {
-            Console.WriteLine("Введите 'eat', что бы начать трапезу. Что бы идти далее введите 'dont eat'.");
+            Console.WriteLine("Введите 'eat', для начала трапезы.");
+            Console.WriteLine("Ведите 'dont eat', что бы идти далее.");
             Console.WriteLine("--------------------------------");
             do
             {
