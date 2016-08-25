@@ -65,9 +65,9 @@ namespace Troll_Lazutchik
 
             phrasesMas[100, 1] = "На подходе к деревне вы замечаете иcтоптанное конями поле..."; phrasesMas[100, 0] = "n";
             phrasesMas[101, 1] = "Вы подходите к деревне, и наблюдаете ужасное зрелище. Она разорена."; phrasesMas[101, 0] = "n";
-            phrasesMas[102, 1] = "Окончательно протрезвев, вы понимаете, что на вас совсем нет одежды!Как же вы   раньше этого не заметили?"; phrasesMas[102, 0] = "n";
+            phrasesMas[102, 1] = "Окончательно протрезвев, вы понимаете, что на вас совсем нет одежды! Как же вы  раньше этого не заметили?"; phrasesMas[102, 0] = "n";
             phrasesMas[103, 1] = "Вам следует проверить свой дом и заодно надеть что-нибудь."; phrasesMas[103, 0] = "n";
-            phrasesMas[104, 1] = "Войдя в дом, вы видите,что он разграблен!"; phrasesMas[104, 0] = "n";
+            phrasesMas[104, 1] = "Войдя в дом, вы видите, что он разграблен!"; phrasesMas[104, 0] = "n";
             phrasesMas[105, 1] = ""; phrasesMas[105, 0] = "n";
 
             #endregion
@@ -156,7 +156,7 @@ namespace Troll_Lazutchik
             Console.WriteLine("");
 
             Console.WriteLine("Но кое-что они всё же оставили.");
-            Console.Write("Тщательно обыскав дом, вы нажодите ");
+            Console.Write("Тщательно обыскав дом, вы находите ");
 
             switch (playerClass)
             {
@@ -217,7 +217,7 @@ namespace Troll_Lazutchik
                 }
                 else
                 {
-                    ViewPhrase(11, 16);
+                    ViewPhrase(11, 17);
                 }
                 
             }
@@ -267,7 +267,7 @@ namespace Troll_Lazutchik
                     break;
 
                 case 16:        // отдых
-                    
+                    Optional.GetSleepCommand(player, true);
                     break;
             }
         }

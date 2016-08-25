@@ -8,12 +8,14 @@ namespace Troll_Lazutchik
 {
     static class Optional
     {
-        static string attackKey;
-        static string goKey;
-        static string resrartKey;
-        static string eatKey;
+        private static string attackKey;
+        private static string goKey;
+        private static string resrartKey;
+        private static string eatKey;
+        private static string sleepKey;
 
-        static Random random = new Random();
+
+        private static Random random = new Random();
 
         public static void GetAttckKey()            // forcing player to insert 'a' button for attacking
         {
@@ -43,10 +45,53 @@ namespace Troll_Lazutchik
             } while (goKey != "g");
         }
 
+        public static void GetSleepCommand(Player player, bool illChanceStatus)
+        {
+            Console.WriteLine("Введите 's', что бы лечь спать.");
+            Console.WriteLine("Введите 'f', что бы продолжить путь.");
+            Console.WriteLine("--------------------------------");
+
+            do
+            {
+                sleepKey = Console.ReadLine();
+                if(sleepKey != "s" && sleepKey != "f")
+                {
+                    Console.WriteLine("Неизвестная команда, попробуйте снова.");
+                }
+            } while (sleepKey != "s" && sleepKey != "f");
+
+            int heal = random.Next(5, 11);
+            if (!illChanceStatus)
+            {
+                player.Health += heal;
+                Console.WriteLine("Вы отдохнули и продолжаете свой путь.");
+                Console.WriteLine("Восстановлено здоровья: " + heal);
+                Console.WriteLine("Ваше текущее здоровье: " + player.Health);
+            }
+            else
+            {
+                int illChance = random.Next(1, 100);
+                if (illChance >= 60)
+                {
+                    int illDamage = random.Next(5, 16);
+                    Console.WriteLine("Спав на холодной земле вы отморозили некоторые органы...");
+                    Console.WriteLine("Потеряно здоровья: " + illDamage);
+                    Console.WriteLine("Ваше текущее здоровье: " + player.Health);
+                }
+                else
+                {
+                    player.Health += heal;
+                    Console.WriteLine("Вы отдохнули и продолжаете свой путь.");
+                    Console.WriteLine("Восстановлено здоровья: " + heal);
+                    Console.WriteLine("Ваше текущее здоровье: " + player.Health);
+                }
+            }
+        }
+
         public static void GetEatCommand(Player player, string poisinedPhrase, string healedPhrase, string deathPhrase)     // eating smth with chance of healing or taking damage (all unique phrases should be writen when used)
         {
             Console.WriteLine("Введите 'eat', для начала трапезы.");
-            Console.WriteLine("Ведите 'dont eat', что бы идти далее.");
+            Console.WriteLine("Введите 'dont eat', что бы идти далее.");
             Console.WriteLine("--------------------------------");
             do
             {
