@@ -45,7 +45,7 @@ namespace Troll_Lazutchik
             } while (goKey != "g");
         }
 
-        public static void GetSleepCommand(Player player, bool illChanceStatus)
+        public static void GetSleepCommand(Player player, bool illChanceStatus)         // sleeping with chance of geting ill
         {
             Console.WriteLine("Введите 's', что бы лечь спать.");
             Console.WriteLine("Введите 'f', что бы продолжить путь.");
