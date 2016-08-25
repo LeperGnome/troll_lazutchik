@@ -56,11 +56,11 @@ namespace Troll_Lazutchik
             phrasesMas[10, 1] = "Вам становится плохо. Алкоголь даёт о себе знать. Немного передохнув, вы выдвигаетесь дальше..."; phrasesMas[10, 0] = "n";
 
             phrasesMas[11, 1] = "На дорогоге вы замечаете сеймейство маслят. Эти ребята выглядят очень аппетитно. Рискнёте съесть их?"; phrasesMas[11, 0] = "n";
-            phrasesMas[12, 1] = ""; phrasesMas[12, 0] = "n";
-            phrasesMas[13, 1] = "Вы замечаете, что тучи сгущаются, видимо скоро начнётся дождь."; phrasesMas[13, 0] = "n";
-            phrasesMas[14, 1] = ""; phrasesMas[14, 0] = "n";
-            phrasesMas[15, 1] = ""; phrasesMas[15, 0] = "n";
-            phrasesMas[16, 1] = ""; phrasesMas[16, 0] = "n";
+            phrasesMas[12, 1] = "Вы не замечаете ничего интересного. "; phrasesMas[12, 0] = "n";
+            phrasesMas[13, 1] = "Вы видите, что тучи сгущаются, видимо скоро начнётся дождь."; phrasesMas[13, 0] = "n";
+            phrasesMas[14, 1] = "На дорог вы находите 5 гривен. Должно хватить на какую-либо мелочь."; phrasesMas[14, 0] = "n";
+            phrasesMas[15, 1] = "Солнце садится, следеут двигаться быстрее..."; phrasesMas[15, 0] = "n";
+            phrasesMas[16, 1] = "Вы переутомились и хотите немного передохнуть. Позволите себе немного вздремнуть? "; phrasesMas[16, 0] = "n";
 
 
             phrasesMas[100, 1] = "На подходе к деревне вы замечаете иcтоптанное конями поле..."; phrasesMas[100, 0] = "n";
@@ -221,7 +221,7 @@ namespace Troll_Lazutchik
                 }
                 
             }
-            Console.ReadLine();
+
         }
 
         private void ViewPhrase(int startPhrase, int endPhrase)
@@ -261,7 +261,14 @@ namespace Troll_Lazutchik
 
                     break;
 
-                
+                case 14:        // нахождение золота
+                    player.Gold += 5;
+                    Console.WriteLine("Ваше текущее золото: " + player.Gold);
+                    break;
+
+                case 16:        // отдых
+                    
+                    break;
             }
         }
 

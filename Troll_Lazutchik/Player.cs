@@ -11,6 +11,7 @@ namespace Troll_Lazutchik
         public const int ID = 0 ;
         public bool Alive = true;
 
+        public int Gold = 0;
         public int Health = 100;
         public int Armor = 0;
         public int Damage;
