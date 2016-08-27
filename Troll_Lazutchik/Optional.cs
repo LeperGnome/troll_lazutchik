@@ -31,16 +31,24 @@ namespace Troll_Lazutchik
             } while (attackKey != "a");
         }
 
-        public static void GetGoKey()               // forcing player to insert 'g' button for going forvard
+        public static void GetGoKey(Player player)               // forcing player to insert 'g' button for going forvard
         {
             Console.WriteLine("Введите 'g', чтобы пройти далее.");
             Console.WriteLine("--------------------------------");
             do
             { 
                 goKey = Console.ReadLine();
-                if(goKey != "g")
+                if(goKey != "g" && goKey != "stats")
                 {
                     Console.WriteLine("Неизвестная команда, попробуйте снова.");
+                } else if (goKey == "stats")
+                {
+                    Console.WriteLine("Ваше текущее здоровье: "+ player.Health);
+                    Console.WriteLine("Ваша текущая броня: " + player.Armor);
+                    Console.WriteLine("Ваш текущий урон: " + player.Damage);
+                    Console.WriteLine("Количество ваших денег: " + player.Gold);
+                    Console.WriteLine("Ваш шанс уклонения: {0}%", player.DodgeChance);
+                    Console.WriteLine("--------------------------------");
                 }
             } while (goKey != "g");
         }

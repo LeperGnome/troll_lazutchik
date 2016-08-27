@@ -82,11 +82,14 @@ namespace Troll_Lazutchik
             Console.WriteLine("Вы поднимаетесь с земли и отправляетесь в путь.");
 
             stepsToVilage = random.Next(12, 14);
+            Console.WriteLine("Введите 'stats', чтобы посмотреть ваши характеристики.");
             VilageTrip();
 
+            Console.WriteLine("Введите 'stats', чтобы посмотреть ваши характеристики.");
             House();
 
             stepsForest = 8;
+            Console.WriteLine("Введите 'stats', чтобы посмотреть ваши характеристики.");
             ForestTrip();
         }
         
@@ -95,7 +98,7 @@ namespace Troll_Lazutchik
             stepsToEnemy = NextEnemyStep();
             for (step = 1; step < stepsToVilage; step++)
             {
-                Optional.GetGoKey();
+                Optional.GetGoKey(player);
                 if (step == stepsToEnemy)
                 {
                     switch (nextEnemyID)
@@ -131,8 +134,8 @@ namespace Troll_Lazutchik
                     ViewPhrase(1, 11);                    
                 }
             }
-            Optional.GetGoKey();
-            for (int i = 100; i <= 104; i++) { Console.WriteLine(phrasesMas[i, 1]); Optional.GetGoKey(); }
+            Optional.GetGoKey(player);
+            for (int i = 100; i <= 104; i++) { Console.WriteLine(phrasesMas[i, 1]); Optional.GetGoKey(player); }
             Console.WriteLine("--------------------------------");
         }
 
@@ -190,7 +193,7 @@ namespace Troll_Lazutchik
             stepsToEnemy = NextEnemyStep();
             for (step = 1; step < stepsForest; step++)
             {
-                Optional.GetGoKey();
+                Optional.GetGoKey(player);
                 if(step == stepsToEnemy)
                 {
 
