@@ -58,7 +58,8 @@ namespace Troll_Lazutchik
                     }
                 } while (choice != "1" && choice != "2");
             }
-            
+
+            Console.WriteLine();
 
             switch (choice)
             {

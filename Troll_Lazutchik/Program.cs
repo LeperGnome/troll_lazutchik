@@ -28,7 +28,7 @@ namespace Troll_Lazutchik
         Random random = new Random();
 
         static void Main(string[] args)
-        {
+       {
             Program Game = new Program();
 
 
@@ -59,7 +59,7 @@ namespace Troll_Lazutchik
             phrasesMas[13, 1] = "Вы видите, что тучи сгущаются, видимо скоро начнётся дождь.";
             phrasesMas[14, 1] = "На дороге вы находите 5 гривен. Должно хватить на какую-либо мелочь.";
             phrasesMas[15, 1] = "Солнце садится, следеут двигаться быстрее...";
-            phrasesMas[16, 1] = "Вы переутомились и хотите немного передохнуть. Позволите себе немного вздремнуть? ";
+            phrasesMas[16, 1] = "Вы переутомились и хотите немного передохнуть. Позволите себе вздремнуть? ";
 
 
             phrasesMas[100, 1] = "На подходе к деревне вы замечаете иcтоптанное конями поле...";
@@ -307,7 +307,7 @@ namespace Troll_Lazutchik
 
                 case 14:        // нахождение золота
                     player.Gold += 5;
-                    Console.WriteLine("Ваше текущее золото: " + player.Gold);
+                    Console.WriteLine("Количество ваших денег: " + player.Gold);
                     break;
 
                 case 16:        // отдых
