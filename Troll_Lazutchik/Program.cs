@@ -67,7 +67,12 @@ namespace Troll_Lazutchik
             phrasesMas[102, 1] = "Окончательно протрезвев, вы понимаете, что на вас совсем нет одежды! Как же вы  раньше этого не заметили?";
             phrasesMas[103, 1] = "Вам следует проверить свой дом и заодно надеть что-нибудь.";
             phrasesMas[104, 1] = "Войдя в дом, вы видите, что он разграблен!";
-            phrasesMas[105, 1] = "";
+
+            phrasesMas[105, 1] = "Подойдя к лесу вы видите две тропы, ведущие в разные стороны.";
+            phrasesMas[106, 1] = "Одна из них ведет к таинственной пещере, заросшей кустами чертополоха.";
+            phrasesMas[107, 1] = "Другая в глубь леса, к неизвестным ва местам. Вы решатете идти... ";
+            phrasesMas[108, 1] = "1) к пещере. ";
+            phrasesMas[109, 1] = "2) в глубь леса. ";
 
             for (int i = 1; i <= 200; i++)  { phrasesMas[i, 0] = "n"; }
 
@@ -91,8 +96,33 @@ namespace Troll_Lazutchik
             stepsForest = 8;
             Console.WriteLine("Введите 'stats', чтобы посмотреть ваши характеристики.");
             ForestTrip();
+
+            #region ROAD CHOICE
+            Optional.GetGoKey(player);
+            for (int i = 105; i <= 109; i++) { Console.WriteLine(phrasesMas[i, 1]); }
+            string roadChoice;
+            do
+            {
+                roadChoice = Console.ReadLine();
+                if (roadChoice != "1" && roadChoice != "2")
+                {
+                    Console.WriteLine("Неизвестная команда, попробуйте снова.");
+                }
+            } while (roadChoice != "1" && roadChoice != "2");
+            #endregion
+
+            switch (roadChoice)
+            {
+                case "1":
+                    Cave();
+                    break;
+
+                case "2":
+                    TrollCamp();
+                    break;
+            }
         }
-        
+
         private void VilageTrip()
         {
             stepsToEnemy = NextEnemyStep();
@@ -225,7 +255,17 @@ namespace Troll_Lazutchik
                 }
                 
             }
+            
+        }
 
+        private void Cave()
+        {
+            Console.ReadLine();
+        }
+
+        private void TrollCamp()
+        {
+            Console.ReadLine();
         }
 
         private void ViewPhrase(int startPhrase, int endPhrase)

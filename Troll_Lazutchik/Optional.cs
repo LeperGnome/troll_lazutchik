@@ -126,7 +126,7 @@ namespace Troll_Lazutchik
 
                         if(player.Health <= 0)
                         {
-                            Console.WriteLine("deathPhrase");
+                            Console.WriteLine(deathPhrase);
                             Restart();
                             player.Alive = false;
                         }
