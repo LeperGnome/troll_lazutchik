@@ -67,31 +67,33 @@ namespace Troll_Lazutchik
                     Console.WriteLine("Неизвестная команда, попробуйте снова.");
                 }
             } while (sleepKey != "s" && sleepKey != "f");
-
-            int heal = random.Next(5, 11);
-            if (!illChanceStatus)
+            if (sleepKey == "s")
             {
-                player.Health += heal;
-                Console.WriteLine("Вы отдохнули и продолжаете свой путь.");
-                Console.WriteLine("Восстановлено здоровья: " + heal);
-                Console.WriteLine("Ваше текущее здоровье: " + player.Health);
-            }
-            else
-            {
-                int illChance = random.Next(1, 100);
-                if (illChance >= 60)
-                {
-                    int illDamage = random.Next(5, 16);
-                    Console.WriteLine("Спав на холодной земле вы отморозили некоторые органы...");
-                    Console.WriteLine("Потеряно здоровья: " + illDamage);
-                    Console.WriteLine("Ваше текущее здоровье: " + player.Health);
-                }
-                else
+                int heal = random.Next(5, 11);
+                if (!illChanceStatus)
                 {
                     player.Health += heal;
                     Console.WriteLine("Вы отдохнули и продолжаете свой путь.");
                     Console.WriteLine("Восстановлено здоровья: " + heal);
                     Console.WriteLine("Ваше текущее здоровье: " + player.Health);
+                }
+                else
+                {
+                    int illChance = random.Next(1, 100);
+                    if (illChance >= 60)
+                    {
+                        int illDamage = random.Next(5, 16);
+                        Console.WriteLine("Спав на холодной земле вы отморозили некоторые органы...");
+                        Console.WriteLine("Потеряно здоровья: " + illDamage);
+                        Console.WriteLine("Ваше текущее здоровье: " + player.Health);
+                    }
+                    else
+                    {
+                        player.Health += heal;
+                        Console.WriteLine("Вы отдохнули и продолжаете свой путь.");
+                        Console.WriteLine("Восстановлено здоровья: " + heal);
+                        Console.WriteLine("Ваше текущее здоровье: " + player.Health);
+                    }
                 }
             }
         }

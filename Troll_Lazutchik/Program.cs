@@ -61,6 +61,13 @@ namespace Troll_Lazutchik
             phrasesMas[15, 1] = "Солнце садится, следеут двигаться быстрее...";
             phrasesMas[16, 1] = "Вы переутомились и хотите немного передохнуть. Позволите себе вздремнуть? ";
 
+            phrasesMas[17, 1] = "";
+            phrasesMas[18, 1] = "";
+            phrasesMas[19, 1] = "";
+            phrasesMas[20, 1] = "";
+            phrasesMas[21, 1] = "";
+            phrasesMas[22, 1] = "";
+            phrasesMas[23, 1] = "";
 
             phrasesMas[100, 1] = "На подходе к деревне вы замечаете иcтоптанное конями поле...";
             phrasesMas[101, 1] = "Вы подходите к деревне, и наблюдаете ужасное зрелище. Она разорена.";
@@ -73,6 +80,13 @@ namespace Troll_Lazutchik
             phrasesMas[107, 1] = "Другая в глубь леса, к неизвестным ва местам. Вы решатете идти... ";
             phrasesMas[108, 1] = "1) к пещере. ";
             phrasesMas[109, 1] = "2) в глубь леса. ";
+
+            phrasesMas[110, 1] = "Вы решаете проверить таинственную пещеру.";
+            phrasesMas[111, 1] = "Из замшелого входа веяло сыростью...";
+            phrasesMas[112, 1] = "Войдя туда, вы видите маленького человека, предположительно гнома, копающегося в каком-то мусоре.";
+            phrasesMas[113, 1] = "1) Заговорить с гномом.";
+            phrasesMas[114, 1] = "2) Попытаться убить гнома.";
+            phrasesMas[115, 1] = "3) Незаметно выйти из пещеры.";
 
             for (int i = 1; i <= 200; i++)  { phrasesMas[i, 0] = "n"; }
 
@@ -121,6 +135,7 @@ namespace Troll_Lazutchik
                     TrollCamp();
                     break;
             }
+
         }
 
         private void VilageTrip()
@@ -260,7 +275,75 @@ namespace Troll_Lazutchik
 
         private void Cave()
         {
-            Console.ReadLine();
+            for (int k = 110; k <= 116; k++) { Console.WriteLine(phrasesMas[k,1]); }
+            #region  CAVE  PATH CHOICE
+            string choice;
+            do
+            {
+                choice = Console.ReadLine();
+                if (choice != "1" && choice != "2" && choice !="3")
+                {
+                    Console.WriteLine("Неизвестная команда, попробуйте снова.");
+                }
+            } while (choice != "1" && choice != "2" && choice != "3");
+            #endregion
+
+            switch (choice)
+            {
+                case "1":
+                    CaveDialog();
+                    break;
+
+                case "2":
+                    Console.WriteLine("Вы пытаетесь незаметно подкрасться к гному, но он замечает вас и быстро убегает в глубь пещеры.");
+                    Console.WriteLine("У вас есть последний шанс уйти.");
+                    Console.WriteLine("1) Пройти в глубь пещеры в след за гномом.");
+                    Console.WriteLine("2) Выйти и продолжить свой путь по лесу.");
+                    #region BACK CHOICE
+                    string backChoice;
+                    do
+                    {
+                        backChoice = Console.ReadLine();
+                        if (backChoice != "1" && backChoice != "2")
+                        {
+                            Console.WriteLine("Неизвестная команда, попробуйте снова.");
+                        }
+                    } while (backChoice != "1" && backChoice != "2");
+                    
+                    switch (backChoice)
+                    {
+                        case "1":
+                            Console.WriteLine("Вы отправляетесь а погоню за гномом.");
+                            Optional.GetGoKey(player);
+                            CaveFight();
+                            break;
+
+                        case "2":
+                            Console.WriteLine("ВЫ разворачиваетесь и выходите из пещеры.");
+                            Optional.GetGoKey(player);
+                            TrollCamp();
+                            break;
+                    }
+                    break;
+                #endregion
+                case "3":
+                    Console.WriteLine("Вы развернулись и вышли из пещеры. К счастью, вы остались незамечаными.");
+                    Optional.GetGoKey(player);
+                    TrollCamp();            // !!! ПРОБЛЕМА? !!!
+                    break;
+            } 
+        }
+
+        private void CaveDialog()
+        {
+            Console.WriteLine("1) Гхм... Добрый день.");
+            Console.WriteLine("2) Ты еще кто такой?!");
+
+        }
+
+        private void CaveFight()
+        {
+
         }
 
         private void TrollCamp()
