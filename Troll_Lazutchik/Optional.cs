@@ -148,6 +148,28 @@ namespace Troll_Lazutchik
             }
         }
 
+        public static string PhraseChoice(int phraseCount)      // forcing player to choose frase for exact range 
+        {
+            string choice;
+            bool correctInp = false;
+            do
+            {
+                choice = Console.ReadLine();
+                for (int k = 1; k <= phraseCount; k++)
+                {
+                    if (choice == k.ToString())
+                    {
+                        correctInp = true;
+                    }
+                }
+                if (!correctInp)
+                {
+                    Console.WriteLine("Неизвестная команда, попробуйте снова.");
+                }
+            } while (!correctInp);
+            return choice;
+        }
+
         public static void Restart()        // restarting the game or quiting 
         {
             Console.WriteLine("Введите 'y' для продолжения или 'n' для выхода из игры.");

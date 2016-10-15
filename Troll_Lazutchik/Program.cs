@@ -82,7 +82,7 @@ namespace Troll_Lazutchik
             phrasesMas[109, 1] = "2) в глубь леса. ";
 
             phrasesMas[110, 1] = "Вы решаете проверить таинственную пещеру.";
-            phrasesMas[111, 1] = "Из замшелого входа веяло сыростью...";
+            phrasesMas[111, 1] = "Из замшелого входа веет сыростью...";
             phrasesMas[112, 1] = "Войдя туда, вы видите маленького человека, предположительно гнома, копающегося в каком-то мусоре.";
             phrasesMas[113, 1] = "1) Заговорить с гномом.";
             phrasesMas[114, 1] = "2) Попытаться убить гнома.";
@@ -191,15 +191,8 @@ namespace Troll_Lazutchik
             Console.WriteLine("1) отставного офицера;   (Легко)");
             Console.WriteLine("2) сторожа;   (Средне)");
             Console.WriteLine("3) крестьянина;   (Сложно)");
-            do
-            {
-                playerClass = Console.ReadLine();
-                if (playerClass != "1" && playerClass != "2" && playerClass != "3")
-                {
-                    Console.WriteLine("Неизвестная команда, попробуйте снова.");
-                }
-            } while (playerClass != "1" && playerClass != "2" && playerClass != "3");
 
+            playerClass = Optional.PhraseChoice(3);
 
             Console.WriteLine("...нечего взять, разбойники нашли, чем поживиться.");
             Console.WriteLine("");
@@ -276,17 +269,7 @@ namespace Troll_Lazutchik
         private void Cave()
         {
             for (int k = 110; k <= 116; k++) { Console.WriteLine(phrasesMas[k,1]); }
-            #region  CAVE  PATH CHOICE
-            string choice;
-            do
-            {
-                choice = Console.ReadLine();
-                if (choice != "1" && choice != "2" && choice !="3")
-                {
-                    Console.WriteLine("Неизвестная команда, попробуйте снова.");
-                }
-            } while (choice != "1" && choice != "2" && choice != "3");
-            #endregion
+            string choice = Optional.PhraseChoice(3);
 
             switch (choice)
             {
@@ -300,21 +283,14 @@ namespace Troll_Lazutchik
                     Console.WriteLine("1) Пройти в глубь пещеры в след за гномом.");
                     Console.WriteLine("2) Выйти и продолжить свой путь по лесу.");
                     #region BACK CHOICE
-                    string backChoice;
-                    do
-                    {
-                        backChoice = Console.ReadLine();
-                        if (backChoice != "1" && backChoice != "2")
-                        {
-                            Console.WriteLine("Неизвестная команда, попробуйте снова.");
-                        }
-                    } while (backChoice != "1" && backChoice != "2");
+                    string backChoice = Optional.PhraseChoice(2);
                     
                     switch (backChoice)
                     {
                         case "1":
                             Console.WriteLine("Вы отправляетесь а погоню за гномом.");
                             Optional.GetGoKey(player);
+                            Console.WriteLine("За углом вас встречает толпа гномов.");
                             CaveFight();
                             break;
 
@@ -324,20 +300,90 @@ namespace Troll_Lazutchik
                             TrollCamp();
                             break;
                     }
+                    #endregion
                     break;
-                #endregion
+                    
                 case "3":
                     Console.WriteLine("Вы развернулись и вышли из пещеры. К счастью, вы остались незамечаными.");
                     Optional.GetGoKey(player);
-                    TrollCamp();            // !!! ПРОБЛЕМА? !!!
+                    TrollCamp();
                     break;
             } 
         }
 
         private void CaveDialog()
         {
+            
             Console.WriteLine("1) Гхм... Добрый день.");
             Console.WriteLine("2) Ты еще кто такой?!");
+            string dialogPhrase = Optional.PhraseChoice(2);
+            
+            switch (dialogPhrase)
+            {
+                case "1":
+                    Console.WriteLine("         [Вы]: Гхм... Добрый день.");
+                    Console.WriteLine("         [Гном]: !@#$% ");
+                    Console.WriteLine("         [Гном]: Напугал! Людям тут не место, убирайся!");
+
+                    Console.WriteLine("1) Ахаха, да что ты мне сделаешь, карлик?");
+                    Console.WriteLine("2) Прости, я не хотел тебя напугать...");
+                    Console.WriteLine("3) Ладно, ладно, уже ухожу.");
+                    dialogPhrase = Optional.PhraseChoice(3);
+                    switch (dialogPhrase)
+                    {
+                        case "1":
+                            Console.WriteLine("         [Вы]: Ахаха, ну и что ты мне сделаешь, карлик?");
+                            Console.WriteLine("         [Гном]: Да как ты смеешь, жалкий человечишка! ");
+                            Console.WriteLine("         [Гном]: Живым тебе отсюда не уйти.");
+                            break;
+                        case "2":
+                            Console.WriteLine("         [Вы]: Прости, я не хотел тебя напугать...");
+                            Console.WriteLine("         [Гном]: К чёрту извинения. Что тебе надо?");
+                            break;
+                        case "3":
+                            Console.WriteLine("         [Вы]: Ладно, ладно, уже ухожу.");
+                            Console.WriteLine("         [Гном]: Пошивеливайся!");
+                            Console.WriteLine("Вы развернулись и вышли из пещеры.");
+                            Optional.GetGoKey(player);
+                            TrollCamp();
+                            break;
+                    }
+                    break;
+                case "2":
+                    Console.WriteLine("         [Вы]: Ты еще кто такой?!");
+                    Console.WriteLine("         [Гном]: !@#$%*& ");
+                    Console.WriteLine("         [Гном]: Ах ты мерзавец, проваливай, пока цел!");
+
+                    Console.WriteLine("1) Ахаха, да что ты мне сделаешь, карлик?");
+                    Console.WriteLine("2) Очаровательный хам...");
+                    Console.WriteLine("3) Хорошо, только без глупостей. (уйти)");
+                    dialogPhrase = Optional.PhraseChoice(3);
+
+                    switch (dialogPhrase)
+                    {
+                        case "1":
+                            Console.WriteLine("         [Вы]: Ахаха, ну и что ты мне сделаешь, карлик?");
+                            Console.WriteLine("         [Гном]: Сдавайся сейчас, и, возможно, я пощажу тебя!");
+                            break;
+                        case "2":
+                            Console.WriteLine("         [Вы]: Очаровательный хам...");
+                            Console.WriteLine("         [Гном]: Готовься, сейчас мы тебе устрим взбучку!");
+                            Console.WriteLine("         [Вы]: Мы?...");
+                            Optional.GetGoKey(player);
+                            Console.WriteLine("Из глубины пещеры на вас выходит толпа гномов.");
+                            CaveFight();
+                            break;
+                        case "3":
+                            Console.WriteLine("         [Вы]: Хорошо, только без глупостей.");
+                            Console.WriteLine("         [Гном]: Пошивеливайся!");
+                            Console.WriteLine("Вы развернулись и вышли из пещеры.");
+                            Optional.GetGoKey(player);
+                            TrollCamp();
+                            break;
+                    }
+
+                    break;
+            }
 
         }
 

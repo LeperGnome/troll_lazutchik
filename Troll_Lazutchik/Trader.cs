@@ -36,27 +36,11 @@ namespace Troll_Lazutchik
             if (player.Damage != 8)
             {
                 Console.WriteLine("3. Предложить обмен своего ножа на броню.");
-                do
-                {
-                    choice = Console.ReadLine();
-                    if (choice != "1" && choice != "2" && choice != "3")
-                    {
-                        Console.WriteLine("Неизвестная команда, попробуйте снова.");
-                        choice = Console.ReadLine();
-                    }
-                } while (choice != "1" && choice != "2" && choice != "3");
+                choice = Optional.PhraseChoice(3);
             }
             else
             {
-                do
-                {
-                    choice = Console.ReadLine();
-                    if (choice != "1" && choice != "2")
-                    {
-                        Console.WriteLine("Неизвестная команда, попробуйте снова.");
-                        choice = Console.ReadLine();
-                    }
-                } while (choice != "1" && choice != "2");
+                choice = Optional.PhraseChoice(2);
             }
 
             Console.WriteLine();
@@ -114,6 +98,7 @@ namespace Troll_Lazutchik
             }
             else
             {
+                player.Armor = 20;
                 Console.WriteLine("Вам удалось сразить Хасана. Вы забираете его лучшую броню. ");
                 Console.WriteLine("Пора двигаться дальше.");
                 Console.WriteLine("");
