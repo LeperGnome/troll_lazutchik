@@ -21,11 +21,11 @@ namespace Troll_Lazutchik
         {
             if(Damage != 8)
             {
-                return Optional.GetDamage(Damage, true, inputOppositeArmor, inputOppositeDodgeChance);
+                return Optional.GetDamage(Damage, true, inputOppositeArmor, inputOppositeDodgeChance, true);
             }
             else
             {
-                return Optional.GetDamage(Damage, false, inputOppositeArmor, inputOppositeDodgeChance);
+                return Optional.GetDamage(Damage, false, inputOppositeArmor, inputOppositeDodgeChance, true);
             }
         }        
     }

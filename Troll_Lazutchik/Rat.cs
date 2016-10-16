@@ -14,7 +14,7 @@ namespace Troll_Lazutchik
 
         private int DamageCurrentTime(int inputOppositeArmor, int inputOppositeDodgeChance)
         {
-            return Optional.GetDamage(Damage, false, inputOppositeArmor, inputOppositeDodgeChance);
+            return Optional.GetDamage(Damage, false, inputOppositeArmor, inputOppositeDodgeChance, false);
         }
 
         public void Fighting(Player player, Rat rat)
@@ -48,7 +48,6 @@ namespace Troll_Lazutchik
         {
             int damageTaken = player.DamageCurrentTime(0, 0);
             rat.Health -= damageTaken;
-            Console.WriteLine("Вы нанесли: " + damageTaken + " урона.");
             Console.WriteLine("Текущее здоровье жирной крысы: " + rat.Health);
             Console.WriteLine("");
         }
@@ -56,7 +55,6 @@ namespace Troll_Lazutchik
         {
             int damageGiven = rat.DamageCurrentTime(player.Armor, player.DodgeChance);
             player.Health -= damageGiven;
-            Console.WriteLine("Вам нанесли: " + damageGiven + " урона.");
             Console.WriteLine("Ваше текущее здоровье: " + player.Health);
             Console.WriteLine("");
         }

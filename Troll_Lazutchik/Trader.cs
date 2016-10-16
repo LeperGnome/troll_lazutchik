@@ -17,7 +17,7 @@ namespace Troll_Lazutchik
 
         private int DamageCurrentTime(int inputOppositeArmor, int inputOppositeDodgeChance)
         {
-            return Optional.GetDamage(Damage, false, inputOppositeArmor, inputOppositeDodgeChance);
+            return Optional.GetDamage(Damage, false, inputOppositeArmor, inputOppositeDodgeChance, false);
         }
 
         public void Meeting (Player player, Trader trader)
@@ -109,7 +109,6 @@ namespace Troll_Lazutchik
         {
             int damageTaken = player.DamageCurrentTime(trader.Armor, trader.DodgeChance);
             trader.Health -= damageTaken;
-            Console.WriteLine("Вы нанесли: " + damageTaken + " урона.");
             Console.WriteLine("Текущее здоровье Хасана: " + trader.Health);
             Console.WriteLine("");
         }
@@ -118,7 +117,6 @@ namespace Troll_Lazutchik
         {
             int damageGiven = trader.DamageCurrentTime(player.Armor, player.DodgeChance);
             player.Health -= damageGiven;
-            Console.WriteLine("Вам нанесли: " + damageGiven + " урона.");
             Console.WriteLine("Ваше текущее здоровье: " + player.Health);
             Console.WriteLine("");
         }

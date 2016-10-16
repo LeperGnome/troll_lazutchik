@@ -189,7 +189,7 @@ namespace Troll_Lazutchik
             }
         }
 
-        public static int GetDamage(int inputDamage, bool criticalChanceStatus, int inputOppositeArmor, int inputOppositeDodgeChance)   // seting random damage for obj using obj average damage, ability to deal critical damage, enemy armor and enemy dodge chance (dealing no damage in this case)
+        public static int GetDamage(int inputDamage, bool criticalChanceStatus, int inputOppositeArmor, int inputOppositeDodgeChance, bool playerAttack)   // seting random damage for obj using obj average damage, ability to deal critical damage, enemy armor and enemy dodge chance (dealing no damage in this case)
         {
             int dodge = random.Next(1, 100);
             if (dodge >= inputOppositeDodgeChance)
@@ -206,22 +206,31 @@ namespace Troll_Lazutchik
                     if (critChance <= 50)
                     {
                         Console.WriteLine("Критический урон! ");
+                        current += (int)(current * 0.5);
+                        if (playerAttack) { Console.WriteLine("Вы нанесли: " + current + " урона."); }
+                        else { Console.WriteLine("Вам нанесли: " + current + " урона."); }
                         Console.WriteLine("Урона блокировано: " + damageRuducedByArmor);
-                        return current + (int)(current * 0.5);
+                        return current;
                     }
                     else
                     {
+                        if (playerAttack) { Console.WriteLine("Вы нанесли: " + current + " урона."); }
+                        else { Console.WriteLine("Вам нанесли: " + current + " урона."); }
                         Console.WriteLine("Урона блокировано: " + damageRuducedByArmor);
                         return current;
                     }
                 }
                 else
                 {
+                    if (playerAttack) { Console.WriteLine("Вы нанесли: " + current + " урона."); }
+                    else { Console.WriteLine("Вам нанесли: " + current + " урона."); }
                     Console.WriteLine("Урона блокировано: " + damageRuducedByArmor);
                     return current;
                 }
             } else
             {
+                if (playerAttack) { Console.WriteLine("Вы нанесли: 0 урона."); }
+                else { Console.WriteLine("Вам нанесли: 0 урона."); }
                 Console.WriteLine("Промах! ");
                 return 0;
             }

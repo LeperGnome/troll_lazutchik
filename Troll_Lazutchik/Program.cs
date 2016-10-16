@@ -46,7 +46,7 @@ namespace Troll_Lazutchik
             phrasesMas[1, 1] = "Пройдя пару километров, вы замечаете растерзаный труп лошади своего соседа... ";
             phrasesMas[2, 1] = "Вы не замечаете ничего интересного. ";
             phrasesMas[3, 1] = "На вашем пути не встретилось ничего особенного.";
-            phrasesMas[4, 1] = "Проходя мимо леса вы видите тролля-лазутчика, наблюдающего за вами из-за дерева. Без оружия в этом лесу не обойтись...";
+            phrasesMas[4, 1] = "Проходя мимо леса вы видите тролля-лазутчика, наблюдающего за вами из-за дерева.Без оружия в этом лесу не обойтись...";
             phrasesMas[5, 1] = "На своем пути вы встречаете старую мельницу и вспоминаете, как будучи маленьким сорванцом, вы бегали туда воровать зерно с соседскими мальчишками.";
             phrasesMas[6, 1] = "По пути домой вы натыкаетесь на болото и решаете его обойти.";
             phrasesMas[7, 1] = "Вы споткнулись, не бегите так быстро.";
@@ -104,7 +104,6 @@ namespace Troll_Lazutchik
             Console.WriteLine("Введите 'stats', чтобы посмотреть ваши характеристики.");
             VilageTrip();
 
-            Console.WriteLine("Введите 'stats', чтобы посмотреть ваши характеристики.");
             House();
 
             stepsForest = 8;
@@ -200,27 +199,34 @@ namespace Troll_Lazutchik
             Console.WriteLine("Но кое-что они всё же оставили.");
             Console.Write("Тщательно обыскав дом, вы находите ");
 
+            int hpBonus = 0;
             switch (playerClass)
             {
                 case "1":
                     player.Armor = 15;
+                    hpBonus = 20;
+                    player.Health += hpBonus;
                     Console.WriteLine("помятый стальной нагрудник, рваную рубаху, изношенные портки и пару сапог.");
                     break;
 
                 case "2":
                     player.Armor = 10;
+                    hpBonus = 25;
+                    player.Health += hpBonus;
                     Console.WriteLine("поношенную кольчугу, хлопковые штаны и истоптанные сапоги.");
                     break;
 
                 case "3":
                     player.Armor = 5;
+                    hpBonus = 30;
+                    player.Health += hpBonus;
                     Console.WriteLine("старый кафтан, лапти и облезлые портки.");
                     break;
             }
 
-            player.Health += 30;
+            
             Console.WriteLine("");
-            Console.WriteLine("Вы отдохнули и восстановили здоровье - 30");
+            Console.WriteLine("Вы отдохнули и восстановили здоровье - " + hpBonus);
             Console.WriteLine("Ваше текущее здоровье: {0}", player.Health);
 
         }
@@ -313,7 +319,8 @@ namespace Troll_Lazutchik
 
         private void CaveDialog()
         {
-            
+            Console.WriteLine("Выбирайте фразы для продолжения диалога.");
+            Console.WriteLine();
             Console.WriteLine("1) Гхм... Добрый день.");
             Console.WriteLine("2) Ты еще кто такой?!");
             string dialogPhrase = Optional.PhraseChoice(2);
