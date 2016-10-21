@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Danila.cs" />
+    <Compile Include="GnomeArmy.cs" />
     <Compile Include="Optional.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />

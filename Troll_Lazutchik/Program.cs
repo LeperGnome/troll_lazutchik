@@ -296,7 +296,8 @@ namespace Troll_Lazutchik
                         case "1":
                             Console.WriteLine("Вы отправляетесь а погоню за гномом.");
                             Optional.GetGoKey(player);
-                            Console.WriteLine("За углом вас встречает толпа гномов.");
+                            Console.WriteLine("Неожиданно, за углом он встречает вас со своими братьями.");
+                            Console.WriteLine("--------------------------------");
                             CaveFight();
                             break;
 
@@ -341,11 +342,11 @@ namespace Troll_Lazutchik
                         case "1":
                             Console.WriteLine("         [Вы]: Ахаха, ну и что ты мне сделаешь, карлик?");
                             Console.WriteLine("         [Гном]: Да как ты смеешь, жалкий человечишка! ");
-                            Console.WriteLine("         [Гном]: Живым тебе отсюда не уйти.");
+                            Console.WriteLine("         [Гном]: Живым тебе отсюда не уйти.");  // требуется продолжение
                             break;
                         case "2":
                             Console.WriteLine("         [Вы]: Прости, я не хотел тебя напугать...");
-                            Console.WriteLine("         [Гном]: К чёрту извинения. Что тебе надо?");
+                            Console.WriteLine("         [Гном]: К чёрту извинения. Что тебе надо?");    // требуется продолжение (мирный исход)
                             break;
                         case "3":
                             Console.WriteLine("         [Вы]: Ладно, ладно, уже ухожу.");
@@ -370,7 +371,7 @@ namespace Troll_Lazutchik
                     {
                         case "1":
                             Console.WriteLine("         [Вы]: Ахаха, ну и что ты мне сделаешь, карлик?");
-                            Console.WriteLine("         [Гном]: Сдавайся сейчас, и, возможно, я пощажу тебя!");
+                            Console.WriteLine("         [Гном]: Сдавайся сейчас, и, возможно, я пощажу тебя!"); // требуется продолжение 
                             break;
                         case "2":
                             Console.WriteLine("         [Вы]: Очаровательный хам...");
@@ -378,6 +379,7 @@ namespace Troll_Lazutchik
                             Console.WriteLine("         [Вы]: Мы?...");
                             Optional.GetGoKey(player);
                             Console.WriteLine("Из глубины пещеры на вас выходит толпа гномов.");
+                            Console.WriteLine("--------------------------------");
                             CaveFight();
                             break;
                         case "3":
@@ -396,7 +398,8 @@ namespace Troll_Lazutchik
 
         private void CaveFight()
         {
-
+            GnomeArmy gnomeArmy = new GnomeArmy();
+            gnomeArmy.Fighting(player, gnomeArmy);
         }
 
         private void TrollCamp()
