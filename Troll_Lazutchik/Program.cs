@@ -110,19 +110,9 @@ namespace Troll_Lazutchik
             Console.WriteLine("Введите 'stats', чтобы посмотреть ваши характеристики.");
             ForestTrip();
 
-            #region ROAD CHOICE
             Optional.GetGoKey(player);
             for (int i = 105; i <= 109; i++) { Console.WriteLine(phrasesMas[i, 1]); }
-            string roadChoice;
-            do
-            {
-                roadChoice = Console.ReadLine();
-                if (roadChoice != "1" && roadChoice != "2")
-                {
-                    Console.WriteLine("Неизвестная команда, попробуйте снова.");
-                }
-            } while (roadChoice != "1" && roadChoice != "2");
-            #endregion
+            string roadChoice = Optional.PhraseChoice(2);
 
             switch (roadChoice)
             {
@@ -342,20 +332,37 @@ namespace Troll_Lazutchik
                         case "1":
                             Console.WriteLine("         [Вы]: Ахаха, ну и что ты мне сделаешь, карлик?");
                             Console.WriteLine("         [Гном]: Да как ты смеешь, жалкий человечишка! ");
-                            Console.WriteLine("         [Гном]: Живым тебе отсюда не уйти...");  // требуется продолжение
+                            Console.WriteLine("         [Гном]: Живым тебе отсюда не уйти...");
                             Console.WriteLine("Из глубины пещеры на вас выходит толпа гномов.");
                             Console.WriteLine("--------------------------------");
                             CaveFight();
                             break;
                         case "2":
                             Console.WriteLine("         [Вы]: Прости, я не хотел тебя напугать...");
-                            Console.WriteLine("         [Гном]: К чёрту извинения. Что тебе надо?");    // требуется продолжение (мирный исход)
+                            Console.WriteLine("         [Гном]: К чёрту извинения. Что тебе надо?");    // мирный исход
                             Console.WriteLine("         [Вы]: Я ищу разбойников, разграбивших мою деревню.");
                             Console.WriteLine("         [Гном]: Через наш лес проходит множество бандитов. Скажи, кто именно тебе нужен? ");
                             Console.WriteLine("         [Вы]: Я не знаю никаких подробностей, так что любые сведения будут мне полезны.");
-                            
+                            Console.WriteLine("         [Гном]: Не думаю, что могу сразу тебе все рассказать. У меня есть к тебе одно дело... Выполнишь его, и, кто знает, может быть я тебе помогу...");
 
+                            Console.WriteLine("1) Помочь гному. ");
+                            Console.WriteLine("2) Отказаться и уйти.");
+                            dialogPhrase = Optional.PhraseChoice(2);
+                            switch (dialogPhrase)
+                            {
+                                case "1":
+                                        // ПОМОЩЬ ГНОМУ 
+                                    break;
+
+                                case "2":
+                                    Console.WriteLine("         [Вы]: У меня нет времени на таких, как ты. Прощай.");
+                                    Console.WriteLine("         [Гном]: Скажи спасибо, что остался цел, щенок. ");
+                                    Optional.GetGoKey(player);
+                                    TrollCamp();
+                                    break;
+                            }
                             break;
+                            
                         case "3":
                             Console.WriteLine("         [Вы]: Ладно, ладно, уже ухожу.");
                             Console.WriteLine("         [Гном]: Пошивеливайся!");
@@ -379,7 +386,7 @@ namespace Troll_Lazutchik
                     {
                         case "1":
                             Console.WriteLine("         [Вы]: Ахаха, ну и что ты мне сделаешь, карлик?");
-                            Console.WriteLine("         [Гном]: Сдавайся сейчас, и, возможно, я пощажу тебя!"); // требуется продолжение 
+                            Console.WriteLine("         [Гном]: Сдавайся сейчас, и, возможно, я пощажу тебя!");
                             Console.WriteLine("Из глубины пещеры на вас выходит толпа гномов.");
                             Console.WriteLine("--------------------------------");
                             CaveFight();

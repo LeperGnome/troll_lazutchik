@@ -35,11 +35,14 @@ namespace Troll_Lazutchik
 
             if (player.Health <= 10)
             {
-                Console.WriteLine("");      //  Текст поражения
+                Console.WriteLine("'Банда' гномов отпинала вас до потери сознания.");      //  Текст поражения
+                player.Health = 10;                                                        // Нужно продолжение
+                Console.WriteLine("--------------------------------");
             }
             else if(gnomeArmy.gnomesCount == 0)
             {
-                Console.WriteLine("");      // Текст победы
+                Console.WriteLine("К счастью, вы сумели дать отпор назойливым гномам.");      // Текст победы (очень маловероятно)
+                Console.WriteLine();
             }
         }
 
